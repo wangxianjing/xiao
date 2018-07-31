@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="build-info" />
+        <module name="info-common" />
+        <module name="info-dao" />
+        <module name="info-service" />
+        <module name="info-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="build-info" target="1.5" />
+      <module name="info-common" target="1.5" />
+      <module name="info-dao" target="1.5" />
+      <module name="info-service" target="1.5" />
+      <module name="info-web" target="1.5" />
+      <module name="infoweb" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
