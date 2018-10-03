@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.37\mysql-connector-java-5.1.37.jar"/>
+    <context id="my" targetRuntime="MyBatis3">
+        <!--注释相关-->
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--连接数据库-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://xxxxx.my3w.com:3306/xxxxx_db" userId="xxxxx"
+                        password="Wj160926"/>
+        <!--配置实体类-->
+        <javaModelGenerator targetPackage="org.wong.info.dao.po"
+                            targetProject="D:\IdeaProject\build-info\info-dao\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--配置xml文件-->
+        <sqlMapGenerator targetPackage="org.wong.info.dao.mapper"
+                         targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!--配置mapper文件-->
+        <javaClientGenerator targetPackage="org.wong.info.dao.mapper"
+                             targetProject="D:\IdeaProject\build-info\info-dao\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--<table tableName="T_FEE_AGTBILL" domainObjectName="FeeAgentBill"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>-->
+
+        <table tableName="product_detail" domainObjectName="ProductDetail"
+               enableCountByExample="true" enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="true"
+        enableDeleteByExample="true" enableSelectByExample="true">
+        </table>
+
+    </context>
+</generatorConfiguration>

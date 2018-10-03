@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/info-service/info-service.iml" filepath="$PROJECT_DIR$/info-service/info-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/info-web/info-web.iml" filepath="$PROJECT_DIR$/info-web/info-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/infoweb.iml" filepath="$PROJECT_DIR$/infoweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../info-web/org.wong.info.iml" filepath="$PROJECT_DIR$/../info-web/org.wong.info.iml" />
     </modules>
   </component>
 </project>

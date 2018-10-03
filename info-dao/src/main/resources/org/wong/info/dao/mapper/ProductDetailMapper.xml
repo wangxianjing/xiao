@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wong.info.dao.mapper.ProductDetailMapper">
+  <resultMap id="BaseResultMap" type="org.wong.info.dao.po.ProductDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+    <result column="product_type" jdbcType="INTEGER" property="productType" />
+    <result column="product_catgoty" jdbcType="INTEGER" property="productCatgoty" />
+    <result column="price_level" jdbcType="INTEGER" property="priceLevel" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="product_state" jdbcType="INTEGER" property="productState" />
+    <result column="view_times" jdbcType="INTEGER" property="viewTimes" />
+    <result column="comment_times" jdbcType="INTEGER" property="commentTimes" />
+    <result column="online_time" jdbcType="TIMESTAMP" property="onlineTime" />
+    <result column="offline_time" jdbcType="TIMESTAMP" property="offlineTime" />
+    <result column="product_picture" jdbcType="VARCHAR" property="productPicture" />
+    <result column="publisher" jdbcType="VARCHAR" property="publisher" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, title, detail, product_type, product_catgoty, price_level, price, product_state, 
+    view_times, comment_times, online_time, offline_time, product_picture, publisher
+  </sql>
+  <select id="selectByExample" parameterType="org.wong.info.dao.po.ProductDetailExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.wong.info.dao.po.ProductDetailExample">
+    delete from product_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.wong.info.dao.po.ProductDetail">
+    insert into product_detail (id, title, detail, 
+      product_type, product_catgoty, price_level, 
+      price, product_state, view_times, 
+      comment_times, online_time, offline_time, 
+      product_picture, publisher)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, 
+      #{productType,jdbcType=INTEGER}, #{productCatgoty,jdbcType=INTEGER}, #{priceLevel,jdbcType=INTEGER}, 
+      #{price,jdbcType=DOUBLE}, #{productState,jdbcType=INTEGER}, #{viewTimes,jdbcType=INTEGER}, 
+      #{commentTimes,jdbcType=INTEGER}, #{onlineTime,jdbcType=TIMESTAMP}, #{offlineTime,jdbcType=TIMESTAMP}, 
+      #{productPicture,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.wong.info.dao.po.ProductDetail">
+    insert into product_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+      <if test="productType != null">
+        product_type,
+      </if>
+      <if test="productCatgoty != null">
+        product_catgoty,
+      </if>
+      <if test="priceLevel != null">
+        price_level,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="productState != null">
+        product_state,
+      </if>
+      <if test="viewTimes != null">
+        view_times,
+      </if>
+      <if test="commentTimes != null">
+        comment_times,
+      </if>
+      <if test="onlineTime != null">
+        online_time,
+      </if>
+      <if test="offlineTime != null">
+        offline_time,
+      </if>
+      <if test="productPicture != null">
+        product_picture,
+      </if>
+      <if test="publisher != null">
+        publisher,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productCatgoty != null">
+        #{productCatgoty,jdbcType=INTEGER},
+      </if>
+      <if test="priceLevel != null">
+        #{priceLevel,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="productState != null">
+        #{productState,jdbcType=INTEGER},
+      </if>
+      <if test="viewTimes != null">
+        #{viewTimes,jdbcType=INTEGER},
+      </if>
+      <if test="commentTimes != null">
+        #{commentTimes,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime != null">
+        #{onlineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offlineTime != null">
+        #{offlineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productPicture != null">
+        #{productPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.wong.info.dao.po.ProductDetailExample" resultType="java.lang.Long">
+    select count(*) from product_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update product_detail
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detail != null">
+        detail = #{record.detail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productType != null">
+        product_type = #{record.productType,jdbcType=INTEGER},
+      </if>
+      <if test="record.productCatgoty != null">
+        product_catgoty = #{record.productCatgoty,jdbcType=INTEGER},
+      </if>
+      <if test="record.priceLevel != null">
+        price_level = #{record.priceLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.productState != null">
+        product_state = #{record.productState,jdbcType=INTEGER},
+      </if>
+      <if test="record.viewTimes != null">
+        view_times = #{record.viewTimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentTimes != null">
+        comment_times = #{record.commentTimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.onlineTime != null">
+        online_time = #{record.onlineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.offlineTime != null">
+        offline_time = #{record.offlineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.productPicture != null">
+        product_picture = #{record.productPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publisher != null">
+        publisher = #{record.publisher,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update product_detail
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      detail = #{record.detail,jdbcType=VARCHAR},
+      product_type = #{record.productType,jdbcType=INTEGER},
+      product_catgoty = #{record.productCatgoty,jdbcType=INTEGER},
+      price_level = #{record.priceLevel,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DOUBLE},
+      product_state = #{record.productState,jdbcType=INTEGER},
+      view_times = #{record.viewTimes,jdbcType=INTEGER},
+      comment_times = #{record.commentTimes,jdbcType=INTEGER},
+      online_time = #{record.onlineTime,jdbcType=TIMESTAMP},
+      offline_time = #{record.offlineTime,jdbcType=TIMESTAMP},
+      product_picture = #{record.productPicture,jdbcType=VARCHAR},
+      publisher = #{record.publisher,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.wong.info.dao.po.ProductDetail">
+    update product_detail
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+        product_type = #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productCatgoty != null">
+        product_catgoty = #{productCatgoty,jdbcType=INTEGER},
+      </if>
+      <if test="priceLevel != null">
+        price_level = #{priceLevel,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="productState != null">
+        product_state = #{productState,jdbcType=INTEGER},
+      </if>
+      <if test="viewTimes != null">
+        view_times = #{viewTimes,jdbcType=INTEGER},
+      </if>
+      <if test="commentTimes != null">
+        comment_times = #{commentTimes,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime != null">
+        online_time = #{onlineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offlineTime != null">
+        offline_time = #{offlineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productPicture != null">
+        product_picture = #{productPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.wong.info.dao.po.ProductDetail">
+    update product_detail
+    set title = #{title,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      product_type = #{productType,jdbcType=INTEGER},
+      product_catgoty = #{productCatgoty,jdbcType=INTEGER},
+      price_level = #{priceLevel,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      product_state = #{productState,jdbcType=INTEGER},
+      view_times = #{viewTimes,jdbcType=INTEGER},
+      comment_times = #{commentTimes,jdbcType=INTEGER},
+      online_time = #{onlineTime,jdbcType=TIMESTAMP},
+      offline_time = #{offlineTime,jdbcType=TIMESTAMP},
+      product_picture = #{productPicture,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

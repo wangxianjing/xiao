@@ -1,0 +1,9 @@
+org\wong\info\dao\po\ProductDetailExample$GeneratedCriteria.class
+org\wong\info\dao\po\ProductDetailExample$Criterion.class
+org\wong\info\dao\constant\UnsetValue.class
+org\wong\info\dao\po\ProductDetail.class
+org\wong\info\dao\condition\QueryProductDetailCondition.class
+org\wong\info\dao\mapper\ProductDetailMapper.class
+org\wong\info\dao\po\ProductDetailExample$Criteria.class
+org\wong\info\dao\dao\ProductDetailDAO.class
+org\wong\info\dao\po\ProductDetailExample.class
